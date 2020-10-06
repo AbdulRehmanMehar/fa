@@ -11,8 +11,9 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('spa/resources/ts/app.ts', 'spa/static/js')
-    .sass('spa/resources/scss/app.scss', 'spa/static/css')
+mix.setPublicPath('spa/public');
+mix.js('spa/resources/app/app.ts', 'spa/public/compiled/js')
+    // .sass('spa/resources/scss/app.scss', 'spa/public/static/css')
     .webpackConfig({
         module: {
             rules: [
@@ -21,13 +22,41 @@ mix.js('spa/resources/ts/app.ts', 'spa/static/js')
                     loader: "ts-loader",
                     options: { appendTsSuffixTo: [/\.vue$/] },
                     exclude: /node_modules/
-                }
+                },
             ]
         },
         resolve: {
             extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
         }
     });
+
+
+mix.babelConfig({
+    plugins: ['@babel/plugin-syntax-dynamic-import'],
+});
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            '@': __dirname + '/spa/resources/app',
+        },
+    },
+});
+
+
+
+// SPA.VIEWS.loadJsChunk => resolves it!
+mix.config.webpackConfig.output = {
+    chunkFilename: 'js/[name].bundle.js',
+}
+
+
+// mix.webpackConfig({
+//     output: {
+//         chunkFilename: 'js/chunks/[name].bundle.js',
+//     },
+// });
+
 
 // Full API
 // mix.js(src, output);
