@@ -1,4 +1,4 @@
 {
-    "/spa/static/js/app.js": "/spa/static/js/app.js",
-    "/spa/static/css/app.css": "/spa/static/css/app.css"
+    "/spa/public/js/app.js": "/spa/public/js/app.js",
+    "/spa/public/css/app.css": "/spa/public/css/app.css"
 }

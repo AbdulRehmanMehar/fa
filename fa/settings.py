@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'authentication',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +86,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'authentication.Account'
+
 WSGI_APPLICATION = 'fa.wsgi.application'
 
 
@@ -96,6 +101,10 @@ DATABASES = {
     }
 }
 
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
