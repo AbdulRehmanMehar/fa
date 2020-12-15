@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'authentication',
     'djoser',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -88,7 +89,8 @@ TEMPLATES = [
 
 AUTH_USER_MODEL = 'authentication.Account'
 
-WSGI_APPLICATION = 'fa.wsgi.application'
+# WSGI_APPLICATION = 'fa.wsgi.application'
+ASGI_APPLICATION = "fa.asgi.application"
 
 
 # Database
